@@ -1,7 +1,7 @@
 
-package com.cepestm.turmab.dto;
+package com.cepestm.turmaa.dto;
 
-import com.cepestm.turmab.entity.*;
+import com.cepestm.turmaa.entity.*;
 import java.util.UUID;
 
 

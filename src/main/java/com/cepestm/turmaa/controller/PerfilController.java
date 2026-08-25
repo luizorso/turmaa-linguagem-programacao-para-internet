@@ -1,8 +1,8 @@
 
-package com.cepestm.turmab.controller;
+package com.cepestm.turmaa.controller;
 
-import com.cepestm.turmab.dto.PerfilDTO;
-import com.cepestm.turmab.service.PerfilService;
+import com.cepestm.turmaa.dto.PerfilDTO;
+import com.cepestm.turmaa.service.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
