@@ -1,15 +1,22 @@
 
-package com.cepestm.turmaa.dto;
+package com.cepestm.turmab.dto;
 
-import com.cepestm.turmaa.entity.Perfil;
+import com.cepestm.turmab.entity.*;
+import java.util.UUID;
 
 
-public record PerfilDTO(String nome) {
+public record PerfilDTO(UUID id,String nome){
+    
+    public PerfilDTO(String nome){
+        this(null, nome);
+    }
     
     public Perfil toPerfil(){
         Perfil perfil = new Perfil();
+        perfil.setId(id);
         perfil.setNome(nome);
         return perfil;
+        
     }
     
 }
