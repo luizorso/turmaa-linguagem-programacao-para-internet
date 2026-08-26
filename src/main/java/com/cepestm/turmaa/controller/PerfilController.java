@@ -16,7 +16,7 @@ public class PerfilController{
     
     @GetMapping("/cadastrarPerfil")
     public String cadastrarPerfil(Model model){
-        model.addAttribute("título", "Cadastro de Perfil");
+        model.addAttribute("titulo", "Cadastro de Perfil");
         model.addAttribute("perfilDTO", new PerfilDTO(""));
         return "cadastrarPerfil";
         

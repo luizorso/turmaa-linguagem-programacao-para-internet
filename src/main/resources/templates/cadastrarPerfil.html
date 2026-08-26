@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+
+<html xmlns:th="http://thymeleaf.org">
+  
     <head>
-        <title>TODO supply a title</title>
+        <title th:text="${titulo}">Cadastrar Perfil</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/styleForm.css}">
     </head>
     <body>
-        <div>Bem-vindo ao Spring Boot com JPA</div>
+        <form th:action="@{/cadastrarPerfil}"
+              th:object="${perfilDTO}" method="post">
+            <h3 th:text="${titulo}">Cadastrar Perfil</h3>
+            <input type="hidden" th:field="*{id}">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" 
+                       th:field="*{nome}"
+                       id="nome"
+                       required>
+                
+            </div>
+            <div>
+                <button type="submit"
+                    th:text="${perfilDTO.id != null} ? 'Atualizar' : 'Cadastrar'">
+                    Cadastrar 
+                    <a th:href="@{/perfis}">Cancelar</a>
+                </button> 
+                
+            </div>
+                   
+            
+            
+        </form>
     </body>
 </html>
