@@ -12,8 +12,8 @@
     <body>
         <form th:action="@{/cadastrarPerfil}"
               th:object="${perfilDTO}" method="post">
-            <h3 th:text="${titulo}">Cadastrar Perfil</h3>
-            <input type="hidden" th:field="*{id}">
+            <h3 th:text="${titulo}">Cadastro de Perfil</h3>
+            <input type="hidden"  th:field="*{id}">
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" 
@@ -26,7 +26,7 @@
                 <button type="submit"
                     th:text="${perfilDTO.id != null} ? 'Atualizar' : 'Cadastrar'">
                     Cadastrar 
-                    <a th:href="@{/perfis}">Cancelar</a>
+                   <a th:href="@{/perfis}">Cancelar</a>
                 </button> 
                 
             </div>
