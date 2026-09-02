@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+
+<html xmlns:th="http://thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>listarPerfis</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/styleListar.css}"
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="container">
+            <div th:if="${mensagem}" style="color: green; 
+                 font-weight: bold">
+                <p th:text="${mensagem}"></p>
+            </div>
+            <div class="header-actions">
+                <h3>Listagem de Perfis</h3>
+                <a th:href="@{/cadastrarPerfil}"
+                   class="btn-primary">Novo Perfil
+                </a>
+            </div>
+            <div></div>
+          
+            
+            
+        </div>
     </body>
 </html>

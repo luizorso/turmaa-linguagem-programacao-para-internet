@@ -2,7 +2,9 @@
 package com.cepestm.turmaa.controller;
 
 import com.cepestm.turmaa.dto.PerfilDTO;
+import com.cepestm.turmaa.entity.Perfil;
 import com.cepestm.turmaa.service.PerfilService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,11 +41,20 @@ public class PerfilController{
             );
         }
         return "redirect:/perfis";
-        
     }
-    
     @GetMapping("/perfis")
     public String listarPerfis(Model model){
+        //Busca todos os perfis através do serviço
+        List<Perfil> perfis = service.listAll();
+        /*Adiciona a lista perfis ao model para poder
+        ficar acessível para o thymeleaf
+        */
+        model.addAttribute("perfis", perfis);
+        //Retorna  a página html chamada listarPerfis.html
         return "listarPerfis";
     }
-}
+    
+    
+    }
+    
+
