@@ -16,8 +16,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class PerfilController{
     
-    @Autowired
-    private PerfilService service;
+   
+    private final PerfilService service;
+    
+    public PerfilController(PerfilService service){
+        this.service = service;
+    }
     
     @GetMapping("/cadastrarPerfil")
     public String cadastrarPerfil(Model model){
@@ -28,8 +32,8 @@ public class PerfilController{
     }
     
     @PostMapping("/cadastrarPerfil")
-    public String salvarPerfil(PerfilDTO dto, 
-            RedirectAttributes redAtributos){
+    public String salvarPerfil(@ModelAttribute("perfilDTO")
+                PerfilDTO dto,RedirectAttributes redAtributos){
         if(dto.id() != null){
             service.update(dto.id(), dto);
             redAtributos.addFlashAttribute(
