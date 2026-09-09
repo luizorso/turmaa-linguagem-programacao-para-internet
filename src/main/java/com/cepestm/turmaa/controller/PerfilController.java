@@ -5,23 +5,23 @@ import com.cepestm.turmaa.dto.PerfilDTO;
 import com.cepestm.turmaa.entity.Perfil;
 import com.cepestm.turmaa.service.PerfilService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.UUID;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PerfilController{
     
+   private final PerfilService service;
    
-    private final PerfilService service;
-    
-    public PerfilController(PerfilService service){
-        this.service = service;
-    }
+   public PerfilController(PerfilService service){
+       this.service = service;
+   }
     
     @GetMapping("/cadastrarPerfil")
     public String cadastrarPerfil(Model model){
@@ -33,7 +33,8 @@ public class PerfilController{
     
     @PostMapping("/cadastrarPerfil")
     public String salvarPerfil(@ModelAttribute("perfilDTO")
-                PerfilDTO dto,RedirectAttributes redAtributos){
+                PerfilDTO dto,
+                RedirectAttributes redAtributos){
         if(dto.id() != null){
             service.update(dto.id(), dto);
             redAtributos.addFlashAttribute(
@@ -59,6 +60,15 @@ public class PerfilController{
     }
     
     
+      @PostMapping("/perfis/excluir/{id}")
+    public String excluirPerfil(@PathVariable("id") UUID id,
+           RedirectAttributes redAtributos){
+        service.deleteById(id);
+        redAtributos.addFlashAttribute("mensagem", 
+                "Perfil excluído com sucesso!");
+        return "redirect:/perfis";
+        
     }
+  }
     
 
