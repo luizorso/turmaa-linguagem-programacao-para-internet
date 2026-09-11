@@ -69,6 +69,19 @@ public class PerfilController{
         return "redirect:/perfis";
         
     }
+    
+    @GetMapping("/perfis/editar/{id}")
+    public String editarPerfil(@PathVariable("id")
+        UUID id, Model model){
+        Perfil perfil = service.listById(id);
+        PerfilDTO dto = 
+                new PerfilDTO(perfil.getId(), perfil.getNome());
+        model.addAttribute("titulo","Editar Perfil");
+        model.addAttribute("perfilDTO", dto);
+        return "cadastrarPerfil";
+    
+    }
   }
+
     
 
